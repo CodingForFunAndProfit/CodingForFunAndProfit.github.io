@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title></title>
+
+        
+
+    <link href="../assets/css/style.css" rel="stylesheet"></head>
+
+    <body class="post">
+
+        <header>
+    <nav>
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/about.html">About</a>
+        </li>
+    </ul>
+</nav>
+</header>
+
+        <main>
+            
+    <h1>Creating a heroku pipeline</h1>
+    <p>Setting up a pipeline helps to avoid pushing bugs to the production environment. There are many possibilities to create a setup that fits your needs. I will not explain every possibility. For this application I try to go completely free (costs) and with less friction as possible. You can have multiple stages on a heroku pipeline, use their CI (continuous integration) to test your code or other CI tools and depending on the size of your development staff it can be very useful to fully utilize the whole shebang. In general there are the following stages per default:</p>
+    <ul>
+        <li>Development</li>
+        <li>Review</li>
+        <li>Staging</li>
+        <li>Production</li>
+    </ul>
+    <p>I will not use Review apps, because these could cost me money on heroku. I did connect Travis CI and Heroku to my Github account. By doing this I can push to my Github repository and through webhooks Travis CI will be triggered to test my code and if successfull heroku will get triggered to build and deploy the code automatically to the staging app. For my little one man show it is enough for me to just use a staging-app to test the latest version and if ok to promote that to the production code.
+    </p>
+    <h2>Using a connected Github repository</h2>
+    <p></p>
+    <h2>Using the Heroku CLI</h2>
+    <span>Requirements:</span>
+    <ul>
+        <li>Heroku Account
+            <a href="https://www.heroku.com">https://www.heroku.com</a>
+        </li>
+        <li>Heroku CLI</li>
+    </ul>
+    <span>Commands:</span>
+    <ul>
+        <li>heroku login // opens browser to login</li>
+        <li>heroku create appname</li>
+        <li>add Procfile</li>
+        <li>git push heroku master</li>
+        <li>heroku open // opens app in browser</li>
+        <li>heroku logs --tail // shows the logs</li>
+        <li>heroku pipelines:create -a appname</li>
+        <li>heroku pipelines:list</li>
+        <li>heroku pipelines:info example-pipeline</li>
+        <li>heroku create --remote development herokupipelinetest-dev</li>
+        <li>heroku pipelines:add example-pipeline --app herokupipelinetest-dev</li>
+        <li>heroku create --remote staging herokupipelinetest-staging</li>
+        <li>heroku pipelines:add example-pipeline --app herokupipelinetest-staging</li>
+        <li>git push develpment master</li>
+        <li>git push staging master</li>
+    </ul>
+
+    <span>Sources</span>
+    <ul>
+        <li>
+            <a href="https://devcenter.heroku.com/articles/pipelines">Devcenter: Pipelines on Heroku</a>
+        </li>
+    </ul>
+
+    <a href="/">Back</a>
+
+        </main>
+
+        
+    <script type="text/javascript" src="../assets/js/bundle.js"></script></body>
+</html>
